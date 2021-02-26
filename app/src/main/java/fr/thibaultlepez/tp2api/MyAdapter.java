@@ -1,13 +1,20 @@
 package fr.thibaultlepez.tp2api;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 
 import java.util.Vector;
 
@@ -42,11 +49,31 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null)
-            convertView = _ctx.getLayoutInflater().inflate(R.layout.text_view_layout, parent, false);
+        RequestQueue queue = MySingleton.getInstance(parent.getContext()).getRequestQueue();
 
-        TextView imageUrl = (TextView) convertView.findViewById(R.id.imageUrl);
-        imageUrl.setText(this.vector.get(position));
+        if (convertView == null)
+            convertView = _ctx.getLayoutInflater().inflate(R.layout.bitmap_layout, parent, false);
+
+        ImageView image = (ImageView) convertView.findViewById(R.id.bitmap);
+        ImageRequest request = new ImageRequest(
+                this.vector.get(position),
+                response -> image.setImageBitmap(response),
+                0,
+                0,
+                ImageView.ScaleType.CENTER_CROP,
+                Bitmap.Config.RGB_565,
+                error -> error.printStackTrace()
+        );
+
+        queue.add(request);
+
+//        =====  text layout =====
+//
+//        if (convertView == null)
+//            convertView = _ctx.getLayoutInflater().inflate(R.layout.text_view_layout, parent, false);
+//
+//        TextView imageUrl = (TextView) convertView.findViewById(R.id.imageUrl);
+//        imageUrl.setText(this.vector.get(position));
 
         return convertView;
     }
