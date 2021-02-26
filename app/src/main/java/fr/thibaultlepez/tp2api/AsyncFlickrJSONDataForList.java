@@ -47,7 +47,7 @@ public class AsyncFlickrJSONDataForList extends AsyncTask<String, Void, JSONObje
     @Override
     protected JSONObject doInBackground(String... strings) {
         try {
-            URL url = new URL("https://www.flickr.com/services/feeds/photos_public.gne?tags=trees&format=json");
+            URL url = new URL(String.format("https://www.flickr.com/services/feeds/photos_public.gne?tags=%s&format=json", strings[0]));
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
 

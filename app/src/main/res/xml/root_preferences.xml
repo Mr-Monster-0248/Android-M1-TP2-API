@@ -1,0 +1,38 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Search">
+
+        <EditTextPreference
+            app:icon="@android:drawable/ic_menu_search"
+            app:key="searchKeyword"
+            app:title="Search keyword"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="advanced">
+
+        <EditTextPreference
+            app:icon="@android:drawable/ic_lock_lock"
+            app:key="APIkey"
+            app:title="Flickr API key"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <!--    <PreferenceCategory app:title="@string/sync_header">-->
+
+    <!--        <SwitchPreferenceCompat-->
+    <!--            app:key="sync"-->
+    <!--            app:title="@string/sync_title" />-->
+
+    <!--        <SwitchPreferenceCompat-->
+    <!--            app:dependency="sync"-->
+    <!--            app:key="attachment"-->
+    <!--            app:summaryOff="@string/attachment_summary_off"-->
+    <!--            app:summaryOn="@string/attachment_summary_on"-->
+    <!--            app:title="@string/attachment_title" />-->
+
+    <!--    </PreferenceCategory>-->
+
+</PreferenceScreen>

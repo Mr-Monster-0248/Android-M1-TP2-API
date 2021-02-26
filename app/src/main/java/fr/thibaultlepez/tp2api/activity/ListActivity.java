@@ -1,9 +1,15 @@
-package fr.thibaultlepez.tp2api;
+package fr.thibaultlepez.tp2api.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ListView;
+
+import fr.thibaultlepez.tp2api.AsyncFlickrJSONDataForList;
+import fr.thibaultlepez.tp2api.MyAdapter;
+import fr.thibaultlepez.tp2api.R;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -18,7 +24,10 @@ public class ListActivity extends AppCompatActivity {
         this._pictureList = findViewById(R.id.imageList);
         this._pictureList.setAdapter(_myAdapter);
 
+        SharedPreferences preferenceManager = PreferenceManager.getDefaultSharedPreferences(this);
+        String keyword = preferenceManager.getString("searchKeyword", "cat");
+
         AsyncFlickrJSONDataForList flickrLoader = new AsyncFlickrJSONDataForList(_myAdapter);
-        flickrLoader.execute();
+        flickrLoader.execute(keyword);
     }
 }

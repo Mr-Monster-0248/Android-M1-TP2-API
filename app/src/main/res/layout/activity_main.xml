@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="getImageOnClickListener"
-            android:text="Get image" />
+            android:text="Get localized image" />
 
         <ImageView
             android:id="@+id/flickrImg"
@@ -31,7 +31,9 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:srcCompat="@tools:sample/avatars" />
 
+
     </LinearLayout>
+
 
     <Button
         android:id="@+id/getImageList"
@@ -39,7 +41,15 @@
         android:layout_height="wrap_content"
         android:onClick="goToList"
         android:text="Go to image list"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/settingBtn"
         tools:layout_editor_absoluteX="10dp" />
+
+    <Button
+        android:id="@+id/settingBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToSetting"
+        android:text="Settings"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

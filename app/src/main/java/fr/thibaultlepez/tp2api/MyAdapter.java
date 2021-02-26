@@ -2,18 +2,12 @@ package fr.thibaultlepez.tp2api;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 
 import java.util.Vector;

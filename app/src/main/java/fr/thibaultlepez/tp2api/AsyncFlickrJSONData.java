@@ -3,6 +3,8 @@ package fr.thibaultlepez.tp2api;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.preference.PreferenceManager;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,8 +28,10 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
             }
             String result = bo.toString();
 
+            Log.d("LEPEZ", result);
 
-            result = result.substring(15);
+
+            result = result.substring(14);
             result = result.substring(0, result.length() - 1);
 
             return new JSONObject(result);
@@ -40,9 +44,10 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
 
     @Override
     protected JSONObject doInBackground(String... strings) {
-        URL url = null;
         try {
-            url = new URL("https://www.flickr.com/services/feeds/photos_public.gne?tags=trees&format=json");
+
+
+            URL url = new URL(strings[0]);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             try {
@@ -65,16 +70,5 @@ public class AsyncFlickrJSONData extends AsyncTask<String, Void, JSONObject> {
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
         Log.i("LEPEZ", jsonObject.toString());
-
-        try {
-            String imageURL = jsonObject
-                    .getJSONArray("items")
-                    .getJSONObject(0)
-                    .getJSONObject("media")
-                    .getString("m");
-            Log.i("Image", imageURL);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 }
