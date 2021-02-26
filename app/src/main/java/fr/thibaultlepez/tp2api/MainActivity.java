@@ -2,6 +2,7 @@ package fr.thibaultlepez.tp2api;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -41,5 +42,10 @@ public class MainActivity extends AppCompatActivity {
         Bitmap image = bitmapDownloader.get();
 
         this.flickrImg.setImageBitmap(image);
+    }
+
+    public void goToList(View view) {
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
     }
 }
